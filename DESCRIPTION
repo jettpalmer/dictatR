@@ -1,0 +1,14 @@
+Package: dictatR
+Title: Explore Global Democracy And Dictatorship Data
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Franchesca", "Garcia", , "fbgarcia@calpoly.edu", role = c("aut", "cre")),
+    person("Jett", "Palmer", , "jpalme20@calpoly.edu", role = "aut"),
+    person("Kaatje", "Matthews-Vankoetsveld", , "kmatth06@calpoly.edu", role = "aut"))
+Description: Tools for exploring, visualizing, and analyzing global democracy
+    and dictatorship data, including regime classifications, political trends,
+    and country-level governance indicators.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 8.0.0

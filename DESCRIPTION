@@ -16,3 +16,7 @@ Imports:
     readr
 URL: https://github.com/jettpalmer/dictatR
 BugReports: https://github.com/jettpalmer/dictatR/issues
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

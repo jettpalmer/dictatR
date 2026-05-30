@@ -1,4 +1,4 @@
-test_that("make_regime_map works", {
+test_that("make_regime_map outputs a class:leaflet", {
   democracy_data <- load_data()
   world_data <- load_world_data()
 

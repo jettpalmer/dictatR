@@ -1,3 +1,15 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+test_that("summarize_country_regimes works", {
+  dat <- load_data()
+
+  result <- summarize_country_regimes(dat, country = "Bolivia")
+
+  # Check object type
+  expect_s3_class(result, "tbl_df")
+
+  # Check expected column names
+  expect_equal(names(result), c("Year", "Regime"))
+
+  # Check expected values (e.g., Bolivia in 1950)
+  expect_equal(result$year[1], 1950)
+  expect_equal(result$regime_category[1], "Civilian dictatorship")
 })

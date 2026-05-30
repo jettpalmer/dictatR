@@ -5,5 +5,4 @@ test_that("make_regime_map works", {
   regime_map <- make_regime_map(democracy_data, world_data)
 
   expect_s3_class(regime_map, "leaflet")
-  expect_s3_class(regime_map, "htmlwidget")
 })

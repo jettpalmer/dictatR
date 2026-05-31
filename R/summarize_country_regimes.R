@@ -1,7 +1,7 @@
 #' Summarize country regimes
 #'
 #' @param democracy_data Dataset of countries' regimes to summarize from.
-#' @param country Country whose regiems should be summarized.
+#' @param country Country whose regimes should be summarized.
 #'
 #' @returns A tibble with columns for year and new regime of each regime change.
 #' @importFrom dplyr arrange group_by mutate filter lag select

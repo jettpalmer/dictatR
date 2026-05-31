@@ -16,7 +16,8 @@ Imports:
     dplyr,
     readr,
     rnaturalearth,
-    sf
+    sf,
+    leaflet
 URL: https://github.com/jettpalmer/dictatR
 BugReports: https://github.com/jettpalmer/dictatR/issues
 Suggests: 

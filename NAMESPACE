@@ -2,5 +2,12 @@
 
 export(load_data)
 export(load_world_data)
+export(summarize_country_regimes)
+importFrom(dplyr,arrange)
+importFrom(dplyr,filter)
+importFrom(dplyr,group_by)
+importFrom(dplyr,lag)
+importFrom(dplyr,mutate)
+importFrom(dplyr,select)
 importFrom(readr,read_csv)
 importFrom(rnaturalearth,ne_countries)

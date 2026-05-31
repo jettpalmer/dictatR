@@ -10,6 +10,6 @@ test_that("summarize_country_regimes works", {
   expect_equal(names(result), c("Year", "Regime"))
 
   # Check expected values (e.g., Bolivia in 1950)
-  expect_equal(result$year[1], 1950)
-  expect_equal(result$regime_category[1], "Civilian dictatorship")
+  expect_equal(result$Year[1], 1950)
+  expect_equal(result$Regime[1], "Civilian dictatorship")
 })

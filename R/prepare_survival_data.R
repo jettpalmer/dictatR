@@ -9,7 +9,7 @@
 #' country code, spell identifier, spell duration, whether democracy returned,
 #' region, and regime characteristics.
 #'
-#' @importFrom dplyr arrange group_by mutate lag cumsum lead filter select summarize ungroup left_join any_of
+#' @importFrom dplyr arrange group_by mutate lag lead filter select summarize ungroup left_join any_of
 #' @export
 #'
 #' @examples

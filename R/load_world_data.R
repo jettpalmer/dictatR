@@ -6,6 +6,10 @@
 #' @return An sf object containing country geometries.
 #' @importFrom rnaturalearth ne_countries
 #' @export
+#'
+#' #' @examples
+#' world_data <- load_world_data()
+#' head(world_data)
 load_world_data <- function() {
   rnaturalearth::ne_countries(
     scale = "small",

@@ -28,11 +28,10 @@ prepare_survival_data <- function(democracy_data) {
 
   spell_starts <- survival_base |>
     dplyr::filter(.data$lost_democracy == TRUE) |>
-    dplyr::select(.data$country_code,
-                  .data$spell_id,
-                  .data$region,
-                  .data$is_communist,
-                  .data$is_multiparty)
+    dplyr::select("country_code",
+                  "spell_id",
+                  "is_communist",
+                  "is_multiparty")
 
   survival <- survival_base |>
     dplyr::filter(.data$is_democracy == FALSE) |>

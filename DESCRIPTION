@@ -17,7 +17,8 @@ Imports:
     readr,
     rnaturalearth,
     sf,
-    leaflet
+    leaflet,
+    survival
 URL: https://github.com/jettpalmer/dictatR
 BugReports: https://github.com/jettpalmer/dictatR/issues
 Suggests: 

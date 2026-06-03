@@ -23,7 +23,6 @@ fit_survival_model <- function(democracy_data) {
   survival::coxph(survival::Surv(time, returned_to_democracy) ~
                     is_communist +
                     is_multiparty +
-                    strata(region) +
                     cluster(country_code),
                   data = survival_data)
 }

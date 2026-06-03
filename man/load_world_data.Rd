@@ -13,3 +13,7 @@ An sf object containing country geometries.
 Loads small-scale country geometries from Natural Earth and returns them
 as an sf object.
 }
+\examples{
+world_data <- load_world_data()
+head(world_data)
+}

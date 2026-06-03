@@ -7,7 +7,7 @@
 #' @importFrom rnaturalearth ne_countries
 #' @export
 #'
-#' #' @examples
+#' @examples
 #' world_data <- load_world_data()
 #' head(world_data)
 load_world_data <- function() {

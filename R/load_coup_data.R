@@ -7,7 +7,7 @@
 #' @importFrom readr read_tsv
 #' @export
 #'
-#' #' @examples
+#' @examples
 #' coups <- load_coup_data()
 #' head(coups)
 load_coup_data <- function() {

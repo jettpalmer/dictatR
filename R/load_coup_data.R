@@ -12,6 +12,7 @@
 #' head(coups)
 load_coup_data <- function() {
   readr::read_tsv(
-    "http://www.uky.edu/~clthyn2/coup_data/candidate_dataset.txt"
+    "http://www.uky.edu/~clthyn2/coup_data/candidate_dataset.txt",
+    show_col_types = FALSE
   )
 }

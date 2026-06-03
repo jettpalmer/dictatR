@@ -16,6 +16,34 @@
 #' democracy_data <- load_data()
 #' survival_data <- prepare_survival_data(democracy_data)
 #' head(survival_data)
-prepare_survival_data <- function(democracy_data) {
 
+prepare_survival_data <- function(democracy_data) {
+  survival_base <- democracy_data |>
+    dplyr::arrange(.data$country_code, .data$year) |>
+    dplyr::group_by(.data$country_code) |>
+    dplyr::mutate(lost_democracy = .data$is_democracy == FALSE &
+                    dplyr::lag(.data$is_democracy, default = TRUE),
+                  spell_id = cumsum(.data$lost_democracy),
+                  next_is_democracy = dplyr::lead(.data$is_democracy))
+
+  spell_starts <- survival_base |>
+    dplyr::filter(.data$lost_democracy == TRUE) |>
+    dplyr::select(.data$country_code,
+                  .data$spell_id,
+                  .data$region,
+                  .data$is_communist,
+                  .data$is_multiparty)
+
+  survival <- survival_base |>
+    dplyr::filter(.data$is_democracy == FALSE) |>
+    dplyr::group_by(.data$country_code, .data$spell_id) |>
+    dplyr::summarize(start_year = min(.data$year),
+                     end_year = max(.data$year),
+                     returned_to_democracy = any(.data$next_is_democracy == TRUE, na.rm = TRUE),
+                     time = .data$end_year - .data$start_year + 1,
+                     .groups = "drop") |>
+    dplyr::left_join(spell_starts,
+                     by = c("country_code", "spell_id"))
+
+  survival
 }

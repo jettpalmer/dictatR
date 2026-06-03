@@ -20,17 +20,17 @@ make_regime_map <- function(democracy_data, world_data, include_markers=TRUE) {
   stopifnot(is.data.frame(democracy_data), is.data.frame(world_data))
 
   # Most recent year for each country, for coloring purpose
-  recent <- democracy_data %>%
-    group_by(country_code) %>%
-    slice_max(year, n = 1, with_ties = FALSE) %>%
-    ungroup() %>%
+  recent <- democracy_data |>
+    group_by(country_code) |>
+    slice_max(year, n = 1, with_ties = FALSE) |>
+    ungroup() |>
     select(country_code, year, is_democracy)
 
   # Combine recent democracy data with global map geometries
   # Important: this creates one row per country, not one row per country-year
-  world_recent <- world_data %>%
-    left_join(recent, by = c("adm0_a3" = "country_code")) %>%
-    select(name, adm0_a3, year, is_democracy, geometry) %>%
+  world_recent <- world_data |>
+    left_join(recent, by = c("adm0_a3" = "country_code")) |>
+    select(name, adm0_a3, year, is_democracy, geometry) |>
     st_transform(4326)
 
   # color palette for current democracy
@@ -47,7 +47,7 @@ make_regime_map <- function(democracy_data, world_data, include_markers=TRUE) {
     coords <- st_coordinates(centroids)
   })
 
-  markers_coord <- centroids %>%
+  markers_coord <- centroids |>
     mutate(
       lng = coords[,1],
       lat = coords[,2]
@@ -55,17 +55,17 @@ make_regime_map <- function(democracy_data, world_data, include_markers=TRUE) {
   if (include_markers) {
     # Regime History markers
     # Keep only years where regime changes
-    regime_changes <- democracy_data %>%
-      arrange(country_code, year) %>%
-      group_by(country_code) %>%
-      mutate(prev_regime = lag(regime_category)) %>%
-      filter(year == min(year) | regime_category != prev_regime) %>%
+    regime_changes <- democracy_data |>
+      arrange(country_code, year) |>
+      group_by(country_code) |>
+      mutate(prev_regime = lag(regime_category)) |>
+      filter(year == min(year) | regime_category != prev_regime) |>
       ungroup()
 
     # HTML text for markers
-    marker_data <- regime_changes %>%
-      arrange(country_code, year) %>%
-      group_by(country_code, country_name) %>%
+    marker_data <- regime_changes |>
+      arrange(country_code, year) |>
+      group_by(country_code, country_name) |>
       summarise(
         regime_text = paste0(
           "<b>", first(country_name), "</b><br/>",
@@ -75,17 +75,17 @@ make_regime_map <- function(democracy_data, world_data, include_markers=TRUE) {
       )
 
     # join with coords for all marker data
-    markers_coord <- markers_coord %>%
+    markers_coord <- markers_coord |>
       left_join(marker_data, by = c("adm0_a3" = "country_code"))
 
-    markers_coord <- markers_coord %>%
+    markers_coord <- markers_coord |>
       filter(!is.na(regime_text))
   }
 
 
   # Leaflet interactive Plot
   map <- leaflet(world_recent) |>
-    addProviderTiles(providers$CartoDB.PositronNoLabels) |>
+    leaflet::addProviderTiles(leaflet::providers$CartoDB.PositronNoLabels) |>
     addPolygons(
       fillColor = ~dem_palette(is_democracy),
       fillOpacity = 0.7,

@@ -1,7 +1,7 @@
 test_that("summarize_country_regimes works", {
   dat <- load_data()
 
-  result <- summarize_country_regimes(dat, country = "Bolivia")
+  result <- summarize_country_regimes(dat, country = "BOL")
 
   # Check object type
   expect_s3_class(result, "tbl_df")

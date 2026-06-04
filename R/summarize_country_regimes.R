@@ -1,24 +1,27 @@
-#' Summarize country regimes
+#' Display summary of a country's regimes
 #'
-#' @param democracy_data Dataset of countries' regimes to summarize from.
-#' @param country Country whose regimes should be summarized.
+#' @param country Three letter ISO country code.
+#' @param democracy_data Optional dataframe of countries' regimes.
 #'
-#' @returns A tibble with columns for year and new regime of each regime change.
+#' @returns A tibble with a row for each regime change the country has had
+#' and columns for the year and new regime of the change.
 #' @importFrom dplyr arrange group_by mutate filter lag select
 #' @export
 #'
-#'
 #' @examples
-#' dat <- load_data()
-#' summarize_country_regimes(dat, "United States")
-summarize_country_regimes <- function(democracy_data, country = "Bolivia") {
-  regime_changes <- democracy_data |>
-    filter(country_name == country) |>
+#' summarize_country_regimes("BOL")
+summarize_country_regimes <- function(country, democracy_data = load_data()) {
+
+  validate_country(country, democracy_data)
+
+  validate_dataset(democracy_data)
+
+  democracy_data |>
+    filter(country_code == country) |>
     arrange(year) |>
     mutate(prev_regime = lag(regime_category)) |>
     filter(year == min(year) | regime_category != prev_regime) |>
     select(Year = year,
            Regime = regime_category)
-  regime_changes
 }
 

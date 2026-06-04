@@ -2,22 +2,22 @@
 % Please edit documentation in R/summarize_country_regimes.R
 \name{summarize_country_regimes}
 \alias{summarize_country_regimes}
-\title{Summarize country regimes}
+\title{Display summary of a country's regimes}
 \usage{
-summarize_country_regimes(democracy_data, country = "Bolivia")
+summarize_country_regimes(country, democracy_data = load_data())
 }
 \arguments{
-\item{democracy_data}{Dataset of countries' regimes to summarize from.}
+\item{country}{Three letter ISO country code.}
 
-\item{country}{Country whose regimes should be summarized.}
+\item{democracy_data}{Optional dataframe of countries' regimes.}
 }
 \value{
-A tibble with columns for year and new regime of each regime change.
+A tibble with a row for each regime change the country has had
+and columns for the year and new regime of the change.
 }
 \description{
-Summarize country regimes
+Display summary of a country's regimes
 }
 \examples{
-dat <- load_data()
-summarize_country_regimes(dat, "United States")
+summarize_country_regimes("BOL")
 }

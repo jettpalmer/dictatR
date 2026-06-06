@@ -25,5 +25,5 @@ that were of each type of governance.
 Display summary of a region's regimes
 }
 \examples{
-summarize_country_regimes("East Asia & Pacific")
+summarize_region_regimes("East Asia & Pacific")
 }

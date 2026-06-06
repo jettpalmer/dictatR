@@ -15,7 +15,7 @@
 #' @export
 #'
 #' @examples
-#' summarize_country_regimes("East Asia & Pacific")
+#' summarize_region_regimes("East Asia & Pacific")
 summarize_region_regimes <- function(region, democracy_data = load_data()) {
 
   validate_region(region)

@@ -4,10 +4,10 @@
 \alias{validate_dataset}
 \title{Validate a dataset}
 \usage{
-validate_dataset(country, democracy_data = load_data())
+validate_dataset(democracy_data)
 }
 \arguments{
-\item{democracy_data}{Dataframe of countries' regimes.}
+\item{democracy_data}{dataframe of countries' regimes.}
 }
 \value{
 Invisibly returns \code{TRUE} when the data input is a dataframe.

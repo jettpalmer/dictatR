@@ -12,7 +12,7 @@ prepare_survival_data(democracy_data)
 \value{
 A tibble containing one row per non-democratic spell, including
 country code, spell identifier, spell duration, whether democracy returned,
-region, and regime characteristics.
+and regime characteristics.
 }
 \description{
 Converts country-year democracy data into one row per non-democratic spell,

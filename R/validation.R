@@ -1,6 +1,6 @@
 #' Validate a dataset
 #'
-#' @param democracy_data Dataframe of countries' regimes.
+#' @param democracy_data dataframe of countries' regimes.
 #'
 #' @returns Invisibly returns `TRUE` when the data input is a dataframe.
 validate_dataset <- function(democracy_data) {
@@ -66,4 +66,25 @@ validate_region <- function(region) {
   }
 
   invisible(TRUE)
+}
+
+#' Validate required columns
+#'
+#' @param data A dataframe to validate.
+#' @param required_cols A character vector of required column names.
+#'
+#' @returns Invisibly returns `TRUE` when all required columns are present in
+#' the dataframe.
+validate_columns <- function(data, required_cols) {
+
+missing_cols <- setdiff(required_cols, names(data))
+
+if (length(missing_cols) > 0) {
+  stop(
+    stringr::str_c("Missing required columns: ",
+                   stringr::str_c(missing_cols, collapse = ", ")),
+    call. = FALSE)
+}
+
+invisible(TRUE)
 }

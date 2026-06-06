@@ -3,9 +3,9 @@
 #' @param democracy_data Dataframe of countries' regimes.
 #'
 #' @returns Invisibly returns `TRUE` when the data input is a dataframe.
-validate_dataset <- function(country, democracy_data = load_data()) {
+validate_dataset <- function(democracy_data) {
 
-  if (!is.data.frame(country)) {
+  if (!is.data.frame(democracy_data)) {
     stop("data input must be a dataframe", call. = FALSE)
   }
 

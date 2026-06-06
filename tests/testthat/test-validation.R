@@ -3,7 +3,7 @@ test_that("validate_dataset works", {
 
   expect_invisible(validate_dataset(data))
   expect_error(validate_dataset("not a dataframe"),
-               "data input must be a dataframe")
+               "Data input must be a dataframe")
 })
 
 test_that("validate_country works", {
@@ -11,13 +11,13 @@ test_that("validate_country works", {
 
   expect_invisible(validate_country("BOL", data))
 
-  expect_error(validate_country(123, dat),
+  expect_error(validate_country(123, data),
                "Country code input must be a string")
 
-  expect_error(validate_country("BO", dat),
+  expect_error(validate_country("BO", data),
                "Country code input must three letters")
 
-  expect_error(validate_country("ZZZ", dat),
+  expect_error(validate_country("ZZZ", data),
                "Country code not found in the dataset")
 })
 

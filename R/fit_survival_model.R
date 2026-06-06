@@ -18,7 +18,15 @@
 #' summary(model)
 fit_survival_model <- function(democracy_data) {
 
+  validate_dataset(democracy_data)
+
   survival_data <- prepare_survival_data(democracy_data)
+
+  validate_columns(survival_data, c("time",
+                                    "returned_to_democracy",
+                                    "is_communist",
+                                    "is_multiparty",
+                                    "country_code"))
 
   survival::coxph(survival::Surv(time, returned_to_democracy) ~
                     is_communist +

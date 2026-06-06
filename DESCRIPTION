@@ -18,7 +18,8 @@ Imports:
     rnaturalearth,
     sf,
     leaflet,
-    survival
+    survival,
+    countrycode
 URL: https://github.com/jettpalmer/dictatR
 BugReports: https://github.com/jettpalmer/dictatR/issues
 Suggests: 

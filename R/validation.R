@@ -6,7 +6,7 @@
 validate_dataset <- function(democracy_data) {
 
   if (!is.data.frame(democracy_data)) {
-    stop("data input must be a dataframe", call. = FALSE)
+    stop("Data input must be a dataframe", call. = FALSE)
   }
 
   invisible(TRUE)

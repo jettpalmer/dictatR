@@ -7,9 +7,9 @@
 #'
 #' @return A tibble containing one row per non-democratic spell, including
 #' country code, spell identifier, spell duration, whether democracy returned,
-#' region, and regime characteristics.
+#' and regime characteristics.
 #'
-#' @importFrom dplyr arrange group_by mutate lag lead filter select summarize ungroup left_join any_of
+#' @importFrom dplyr arrange group_by mutate lag lead filter select summarize ungroup left_join
 #' @export
 #'
 #' @examples
@@ -18,6 +18,14 @@
 #' head(survival_data)
 
 prepare_survival_data <- function(democracy_data) {
+  validate_dataset(democracy_data)
+
+  validate_columns(democracy_data, c("country_code",
+                                     "year",
+                                     "is_democracy",
+                                     "is_communist",
+                                     "is_multiparty"))
+
   survival_base <- democracy_data |>
     dplyr::arrange(.data$country_code, .data$year) |>
     dplyr::group_by(.data$country_code) |>

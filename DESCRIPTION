@@ -23,6 +23,7 @@ Imports:
 URL: https://github.com/jettpalmer/dictatR
 BugReports: https://github.com/jettpalmer/dictatR/issues
 Suggests: 
+    arrow,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)

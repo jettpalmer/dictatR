@@ -99,3 +99,15 @@ summarize_country_regimes(democracy_data, country = "BOL")
 # This could support the leaflet map popups or be useful as a standalone helper
 # function.
 ```
+
+```{r}
+write_dictatr_parquet(path = tempdir())
+
+# Writes the three dictatR datasets — democracy, coups, and world — as Parquet
+# files to the specified directory. The directory is created if it does not
+# already exist. The world dataset's geometry column is converted to WKT strings
+# before writing, since Arrow cannot serialize sf geometry objects directly; to
+# reconstruct the sf object after reading, use sf::st_as_sf(df, wkt = "geometry").
+# Accepts any path string, including here::here("data"). Returns a named
+# character vector of the written file paths invisibly.
+```

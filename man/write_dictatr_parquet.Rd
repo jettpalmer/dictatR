@@ -10,8 +10,6 @@ write_dictatr_parquet(path = ".")
 \item{path}{A directory where the Parquet files should be saved.}
 }
 \value{
-A character vector of the desired file path to write Parquet files.
-
 A character vector of file paths to the written Parquet files.
 }
 \description{

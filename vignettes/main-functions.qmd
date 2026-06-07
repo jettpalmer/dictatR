@@ -92,7 +92,7 @@ plot_country_coups(coups_data, democracy_data, country_of_interest = "Bolivia", 
 ```
 
 ```{r}
-summarize_country_regimes(democracy_data, country = "Bolivia")
+summarize_country_regimes(democracy_data, country = "BOL")
 
 # This should return a summary of regime changes for one country, including the
 # years when the country changed regime type and the name of each new regime.

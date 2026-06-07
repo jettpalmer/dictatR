@@ -65,7 +65,7 @@ plot_country_coups <- function(coup_data = load_coup_data(), democracy_data = lo
       geom_point(size = 3) +
       scale_color_manual(values = c("Successful" = "#ee6b6e",
                                     "Unsuccessful" = "steelblue")) +
-      labs(title = paste(country_of_interest, "Coup d'états (<span style='color:#ee6b6e;'>Successful</span> & <span style='color:steelblue;'>Unsuccessful</span>)"),
+      labs(title = paste(country_of_interest, "Coup d'\u00E9tats (<span style='color:#ee6b6e;'>Successful</span> & <span style='color:steelblue;'>Unsuccessful</span>)"),
            y = "Count",
            x = "Year") +
       theme_minimal() +

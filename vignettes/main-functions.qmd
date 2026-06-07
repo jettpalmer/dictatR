@@ -1,10 +1,14 @@
 ---
 title: "main-functions"
-output: rmarkdown::html_vignette
+format: html
+
 vignette: >
   %\VignetteIndexEntry{main-functions}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
+  
+execute: 
+  eval: false
 ---
 
 ```{r, include = FALSE}
@@ -57,20 +61,6 @@ fit_survival_model(democracy_data)
 # Fits a Cox proportional hazards model predicting the time until a
 # non-democratic regime returns to democracy. The model includes indicators
 # for communist and multiparty regimes and clusters standard errors by country.
-```
-
-```{r}
-validate_country("BOL")
-
-# Validates that a three-letter ISO country code exists in the democracy dataset.
-# Returns TRUE invisibly when the input is valid.
-```
-
-```{r}
-validate_region("South Asia")
-
-# Validates that a region name is one of the supported World Bank regions.
-# Returns TRUE invisibly when the input is valid.
 ```
 
 ```{r}

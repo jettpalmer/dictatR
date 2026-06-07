@@ -2,13 +2,6 @@
 #'
 #' @param path A directory where the Parquet files should be saved.
 #'
-#' @return A character vector of the desired file path to write Parquet files.
-#'
-#' @export
-#' Write dictatR datasets as Parquet files
-#'
-#' @param path A directory where the Parquet files should be saved.
-#'
 #' @return A character vector of file paths to the written Parquet files.
 #'
 #' @export
@@ -31,7 +24,10 @@ write_dictatr_parquet <- function(path = ".") {
 
   arrow::write_parquet(load_data(), files[["democracy"]])
   arrow::write_parquet(load_coup_data(), files[["coups"]])
-  arrow::write_parquet(load_world_data(), files[["world"]])
+
+  world_data <- load_world_data()
+  world_data$geometry <- sf::st_as_text(world_data$geometry)
+  arrow::write_parquet(sf::st_drop_geometry(world_data), files[["world"]])
 
   message("Wrote Parquet files to: ", normalizePath(path))
 
